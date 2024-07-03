@@ -6,10 +6,14 @@ export const Ganers = () => {
     return (
         <>
             <Container
-                sx={{ display: "grid", gridTemplateColumns: "19% 79%", gridGap: "10px"}}
+                sx={{
+                    display: "grid",
+                    gridTemplateColumns: "19% 79%",
+                    gridGap: "10px",
+                }}
                 maxWidth="xl"
             >
-                <Box sx={{}}>
+                <Box>
                     <GanersList />
                 </Box>
                 <Outlet />

@@ -1,23 +1,20 @@
 import { getFilmById } from "API";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FilmCardById } from "./FilmCardById";
+import { useDispatch, useSelector } from "react-redux";
 
 export const FilmPageForId = () => {
+    const dispatch = useDispatch();
     let filmId = useParams();
-    const [filmData, setFilmData] = useState("");
-    const getFilmData = async (id) => {
-        const res = await getFilmById(id);
-        console.log(res);
-        setFilmData(res);
-    };
+    const filmData = useSelector((state) => state.state.filmData);
     useEffect(() => {
-        getFilmData(filmId);
-    }, [filmId]);
-
+        dispatch(getFilmById(filmId));
+        console.log("use");
+    }, [filmId, dispatch]);
     return (
         <>
-            {filmData ? (
+            {filmData.length ? (
                 <FilmCardById
                     imgPoster={filmData.poster_path}
                     imgBg={filmData.backdrop_path}

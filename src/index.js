@@ -4,12 +4,16 @@ import { App } from "./App";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "theme";
 import { BrowserRouter } from "react-router-dom";
-
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+export const rootModal = document.querySelector("#Vtoroj-Root");
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-        <ThemeProvider theme={theme}>
-            <BrowserRouter basename="/olegoleg0080/Film">
+    <ThemeProvider theme={theme}>
+        <BrowserRouter basename="/olegoleg0080/Film">
+            <Provider store={store}>
                 <App />
-            </BrowserRouter>
-        </ThemeProvider>
+            </Provider>
+        </BrowserRouter>
+    </ThemeProvider>
 );

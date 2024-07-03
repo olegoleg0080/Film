@@ -1,18 +1,18 @@
 import { Box, Typography } from "@mui/material";
 import { fetchPopular } from "API";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import StarRatings from "react-star-ratings";
 
 export const MostPopularFilms = () => {
-    const [MostPopularsFilmList, setMostPopularsFilmList] = useState([]);
-    const funcA = async () => {
-        const result = await fetchPopular();
-        setMostPopularsFilmList(result);
-    };
+    const dispatch = useDispatch();
+    const MostPopularsFilmList = useSelector(
+        (state) => state.state.mostPopularsFilmList
+    );
+
     useEffect(() => {
-        funcA();
-    }, []);
-    console.log(MostPopularsFilmList[0]);
+        dispatch(fetchPopular());
+    }, [dispatch]);
     return (
         <>
             <Box

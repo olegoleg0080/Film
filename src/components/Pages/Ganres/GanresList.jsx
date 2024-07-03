@@ -1,19 +1,16 @@
 import { List, ListItem } from "@mui/material";
 import { fetchGanreList } from "API";
 import { NavLinkItemGenres } from "components/List.styled";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setGaners } from "../../../redux/listSlice";
 
 export const GanersList = () => {
-    const [ganers, setGaners] = useState([]);
-
-    const getGangerFilm = async () => {
-        const res = await fetchGanreList();
-        setGaners(res);
-    };
+    const dispatch = useDispatch();
+    const ganers = useSelector((state) => state.state.ganers);
     useEffect(() => {
-        getGangerFilm();
-        console.log(ganers);
-    }, []);
+        dispatch(fetchGanreList());
+    }, [dispatch]);
     return (
         <List
             sx={{
