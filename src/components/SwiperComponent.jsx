@@ -7,11 +7,11 @@ import { SwiperItem } from "./SwiperItem";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useDispatch, useSelector } from "react-redux";
-import { setPopularFilmList } from "../redux/listSlice";
+import { popularFilmListSelector } from "../redux/selectors";
 
 export const SwiperComponent = () => {
     const dispatch = useDispatch();
-    const PopularsFilmList = useSelector((state) => state.state.list);
+    const PopularsFilmList = useSelector(popularFilmListSelector);
     useEffect(() => {
         dispatch(fetchPopular())
     }, [dispatch]);

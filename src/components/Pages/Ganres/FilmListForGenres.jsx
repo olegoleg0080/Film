@@ -4,10 +4,11 @@ import { FilmCard } from "components/FilmCard";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { filmListSelector } from "../../../redux/selectors";
 
 export const FilmListForGenres = () => {
     const dispatch = useDispatch();
-    const filmList = useSelector((state) => state.state.filmList);
+    const filmList = useSelector(filmListSelector);
     let genreId = useParams();
     useEffect(() => {
         console.log("dispatch: gen");

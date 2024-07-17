@@ -3,11 +3,12 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FilmCardById } from "./FilmCardById";
 import { useDispatch, useSelector } from "react-redux";
+import { filmDataSelectors } from "../redux/selectors";
 
 export const FilmPageForId = () => {
     const dispatch = useDispatch();
     let filmId = useParams();
-    const filmData = useSelector((state) => state.state.filmData);
+    const filmData = useSelector(filmDataSelectors);
     useEffect(() => {
         dispatch(getFilmById(filmId));
         console.log("use");

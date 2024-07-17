@@ -3,12 +3,11 @@ import { fetchPopular } from "API";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import StarRatings from "react-star-ratings";
+import { mostPopularSelectors } from "../redux/selectors";
 
 export const MostPopularFilms = () => {
     const dispatch = useDispatch();
-    const MostPopularsFilmList = useSelector(
-        (state) => state.state.mostPopularsFilmList
-    );
+    const MostPopularsFilmList = useSelector(mostPopularSelectors);
 
     useEffect(() => {
         dispatch(fetchPopular());

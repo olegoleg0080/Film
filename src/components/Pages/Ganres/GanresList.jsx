@@ -3,11 +3,11 @@ import { fetchGanreList } from "API";
 import { NavLinkItemGenres } from "components/List.styled";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setGaners } from "../../../redux/listSlice";
+import { genresSelector } from "../../../redux/selectors";
 
 export const GanersList = () => {
     const dispatch = useDispatch();
-    const ganers = useSelector((state) => state.state.ganers);
+    const ganers = useSelector(genresSelector);
     useEffect(() => {
         dispatch(fetchGanreList());
     }, [dispatch]);
