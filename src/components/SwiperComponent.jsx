@@ -15,7 +15,6 @@ export const SwiperComponent = () => {
     useEffect(() => {
         dispatch(fetchPopular());
     }, [dispatch]);
-
     return (
         <>
             {PopularsFilmList.length > 0 && (
