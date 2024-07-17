@@ -13,30 +13,33 @@ export const SwiperComponent = () => {
     const dispatch = useDispatch();
     const PopularsFilmList = useSelector(popularFilmListSelector);
     useEffect(() => {
-        dispatch(fetchPopular())
+        dispatch(fetchPopular());
     }, [dispatch]);
 
     return (
-        <Swiper
-            modules={[Navigation, Pagination]}
-            spaceBetween={50}
-            slidesPerView={3}
-            navigation
-            loop={true}
-            style={{ marginTop: "40px" }}
-        >
-            {PopularsFilmList.length > 0 &&
-                PopularsFilmList.map((item) => (
-                    <SwiperSlide key={item.id}>
-                        <SwiperItem
-                            key={item.id}
-                            img={item.poster_path}
-                            raiting={item.vote_average}
-                            title={item.original_title}
-                            overview={item.overview}
-                        ></SwiperItem>
-                    </SwiperSlide>
-                ))}
-        </Swiper>
+        <>
+            {PopularsFilmList.length > 0 && (
+                <Swiper
+                    modules={[Navigation, Pagination]}
+                    spaceBetween={50}
+                    slidesPerView={3}
+                    navigation
+                    loop={true}
+                    style={{ marginTop: "40px" }}
+                >
+                    {PopularsFilmList.map((item) => (
+                        <SwiperSlide key={item.id}>
+                            <SwiperItem
+                                key={item.id}
+                                img={item.poster_path}
+                                raiting={item.vote_average}
+                                title={item.original_title}
+                                overview={item.overview}
+                            ></SwiperItem>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            )}
+        </>
     );
 };
