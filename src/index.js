@@ -10,7 +10,7 @@ export const rootModal = document.querySelector("#Vtoroj-Root");
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <ThemeProvider theme={theme}>
-        <BrowserRouter basename="/olegoleg0080/Film">
+        <BrowserRouter basename="Film">
             <Provider store={store}>
                 <App />
             </Provider>
